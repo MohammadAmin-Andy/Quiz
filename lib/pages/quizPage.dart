@@ -14,6 +14,7 @@ class _QuizPageState extends State<QuizPage> {
   int showQuestionIndex = 0;
   Questions? selectedQuestions;
   bool state = false;
+  int correctAnswers = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +72,9 @@ class _QuizPageState extends State<QuizPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (BuildContext context) => ResultPage(),
+                        builder: (BuildContext context) => ResultPage(
+                          correctAnswer: correctAnswers,
+                        ),
                       ),
                     );
                   },
@@ -95,16 +98,15 @@ class _QuizPageState extends State<QuizPage> {
       title: Text(
         selectedQuestions!.allAnswers![index],
         style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.w500,
+          fontSize: 18,
+          fontWeight: FontWeight.w600,
         ),
       ),
       onTap: () {
         if (selectedQuestions!.correctAnswer == index) {
+          correctAnswers++;
           print('doroste');
-        } else {
-          print('ghalate');
-        }
+        } //else {print('ghalate');}
         setState(() {
           if (showQuestionIndex < getQuestionsList().length - 1) {
             showQuestionIndex++;

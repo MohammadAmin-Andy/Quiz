@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ResultPage extends StatelessWidget {
-  const ResultPage({Key? key}) : super(key: key);
+  ResultPage({Key? key, this.correctAnswer = 0}) : super(key: key);
 
+  int correctAnswer;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +22,40 @@ class ResultPage extends StatelessWidget {
           ),
         ),
       ),
-      body: Text('نتیجه'),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(16),
+          child: Column(
+            children: [
+              Container(width: double.infinity),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image(
+                  image: AssetImage('images/Success.jpg'),
+                ),
+              ),
+              SizedBox(height: 30),
+              Text(
+                'Your correct answers!',
+                style: TextStyle(
+                  fontSize: 30,
+                  color: Colors.green[900],
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 20),
+              Text(
+                '$correctAnswer',
+                style: TextStyle(
+                  fontSize: 50,
+                  color: Colors.green[900],
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

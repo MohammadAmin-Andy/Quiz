@@ -23,10 +23,11 @@ List<Questions> getQuestionsList() {
     'USA',
     'Uk',
   ];
+  secondQuestions.correctAnswer = 1;
 
   var thirdQuestions = Questions();
   thirdQuestions.titleQuestions =
-      'Which part of this link called "domain"?\n\n"HTTP://WWW.Websitename.com/help.com.htm"\n';
+      'Which part of this link called "domain"?\n\n"HTTP://WWW.Websitename.com/help"\n';
   thirdQuestions.imageNum = '3';
   thirdQuestions.allAnswers = [
     'Websitename.com ',

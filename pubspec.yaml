@@ -31,10 +31,10 @@ flutter:
   #   - images/a_dot_ham.jpeg
 
  
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: PublicSans
+      fonts:
+        - asset: fonts/PublicSans-VariableFont_wght.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
