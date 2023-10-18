@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:quiz/data/questions.dart';
+import 'package:quiz/pages/resultPage.dart';
 import '../constance/constance.dart';
 
 class QuizPage extends StatefulWidget {
@@ -11,10 +12,14 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   int showQuestionIndex = 0;
+  Questions? selectedQuestions;
+  bool state = false;
 
   @override
   Widget build(BuildContext context) {
-    var showImageIndex = getQuestionsList()[showQuestionIndex].imageNum!;
+    selectedQuestions = getQuestionsList()[showQuestionIndex];
+    var showImageIndex = selectedQuestions!.imageNum;
+
     return Scaffold(
       backgroundColor: Colors.lightBlue[100],
       appBar: AppBar(
@@ -23,7 +28,7 @@ class _QuizPageState extends State<QuizPage> {
         backgroundColor: Colors.lightBlue[300],
         centerTitle: true,
         title: Text(
-          'questions',
+          '${showQuestionIndex + 1} out of ${getQuestionsList().length}',
           style: TextStyle(
             color: Colors.black,
             fontSize: 25,
@@ -45,7 +50,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               SizedBox(height: 20),
               Text(
-                '${getQuestionsList()[showQuestionIndex].titleQuestions}',
+                '${selectedQuestions!.titleQuestions}',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -53,20 +58,61 @@ class _QuizPageState extends State<QuizPage> {
               ),
               ...List.generate(
                 4,
-                (index) => ListTile(
-                  title: Text(
-                    getQuestionsList()[showQuestionIndex].allAnswers![index],
+                (index) => _getOptionsItem(index),
+              ),
+              SizedBox(height: 20),
+              if (state)
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.red[600],
+                    minimumSize: Size(180, 50),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => ResultPage(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    'Final Result',
                     style: TextStyle(
                       fontSize: 20,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
-              ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _getOptionsItem(int index) {
+    return ListTile(
+      title: Text(
+        selectedQuestions!.allAnswers![index],
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+      onTap: () {
+        if (selectedQuestions!.correctAnswer == index) {
+          print('doroste');
+        } else {
+          print('ghalate');
+        }
+        setState(() {
+          if (showQuestionIndex < getQuestionsList().length - 1) {
+            showQuestionIndex++;
+          } else {
+            state = true;
+          }
+        });
+      },
     );
   }
 }

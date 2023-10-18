@@ -26,7 +26,7 @@ List<Questions> getQuestionsList() {
 
   var thirdQuestions = Questions();
   thirdQuestions.titleQuestions =
-      'Which part of this link caبlled "domain"?\n\n"HTTP://WWW.Websitename.com/help.com.htm"\n';
+      'Which part of this link called "domain"?\n\n"HTTP://WWW.Websitename.com/help.com.htm"\n';
   thirdQuestions.imageNum = '3';
   thirdQuestions.allAnswers = [
     'Websitename.com ',
@@ -36,5 +36,35 @@ List<Questions> getQuestionsList() {
   ];
   thirdQuestions.correctAnswer = 0;
 
-  return [firstQuestions, secondQuestions, thirdQuestions];
+  var forthQuestions = Questions();
+  forthQuestions.titleQuestions =
+      'Which option refers to native programming languages?';
+  forthQuestions.imageNum = '4';
+  forthQuestions.allAnswers = [
+    'Dart',
+    'Java',
+    'KOtlin',
+    '2 and 3',
+  ];
+  forthQuestions.correctAnswer = 3;
+
+  var fifthQuesrions = Questions();
+  fifthQuesrions.titleQuestions =
+      'Number 2 belongs to which one of the following categories?';
+  fifthQuesrions.imageNum = '5';
+  fifthQuesrions.allAnswers = [
+    'String',
+    'int',
+    'bool',
+    'float',
+  ];
+  fifthQuesrions.correctAnswer = 1;
+
+  return [
+    firstQuestions,
+    secondQuestions,
+    thirdQuestions,
+    forthQuestions,
+    fifthQuesrions,
+  ];
 }
