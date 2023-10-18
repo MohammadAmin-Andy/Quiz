@@ -7,10 +7,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey[100],
+      backgroundColor: Colors.lightBlue[100],
       appBar: AppBar(
         elevation: 5,
-        backgroundColor: Colors.lightBlue[100],
+        backgroundColor: Colors.lightBlue[300],
         centerTitle: true,
         title: Text(
           '5 Star Quiz',
@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
               SizedBox(height: 60),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.lightBlue[100],
+                  primary: Colors.lightBlue[300],
                   minimumSize: Size(200, 50),
                 ),
                 onPressed: () {
